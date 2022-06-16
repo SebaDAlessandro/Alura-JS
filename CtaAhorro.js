@@ -1,71 +1,8 @@
-import {Cliente} from './Cliente.js'
+import { Cuenta } from './Cuenta.js';
 
-export class CtaAhorro{
-    #cliente;
-    #saldo;
-    static cantidadCuentas = 0;
+export class CtaAhorro extends Cuenta {
 
-    set cliente(valor){
-        if(valor instanceof Cliente){//controla si el valor es una instacia del tipo cliente
-            this.#cliente = valor;
-        }
+    constructor(cliente, numero, agencia, saldo){
+        super(cliente, numero, agencia, saldo);
     }
-
-    get cliente(){
-        return this.#cliente
-    }
-    
-    constructor(cliente, numero, agencia){
-        this.cliente = cliente;
-        this.numero = numero;
-        this.agencia = agencia;
-        this.#saldo = 0;
-        CtaAhorro.cantidadCuentas++;
-    }
-
-    depositoCta(valor){
-        if(valor>0){
-            this.#saldo += valor;
-            return this.#saldo;
-        }else{
-            console.log('ingrese un numero mayor a cero')
-            return this.#saldo;
-        }
-    }
-
-    retirarCta(valor){
-        if (valor>0){
-            if(valor <= this.#saldo){
-                this.#saldo -= valor;
-                return this.#saldo;
-            }else{
-                console.log('saldo insuficiente');
-                return this.#saldo;
-            }
-        }else{
-            console.log('ingrese un numero mayor a cero')
-            return this.#saldo;
-        }
-    }
-
-    verSaldo(){
-        return this.#saldo;
-    }
-
-    transferirParaCta(valor,ctaDestino){
-        if(valor <= this.#saldo){
-            if(valor>0){
-                this.retirarCta(valor);
-                ctaDestino.depositoCta(valor)
-                return this.#saldo;
-            }else{
-                console.log('No se puede realizar la operacion')
-                return this.#saldo;
-            }
-        }else{
-            console.log('saldo insuficiente');
-            return this.#saldo;
-        }
-    }
-
 }

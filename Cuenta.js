@@ -5,6 +5,14 @@ export class Cuenta{
     #saldo;
     static cantidadCuentas = 0;
 
+    constructor(cliente, numero, agencia){
+        this.cliente = cliente;
+        this.numero = numero;
+        this.agencia = agencia;
+        this.#saldo = 0;
+        Cuenta.cantidadCuentas++;
+    }
+
     set cliente(valor){
         if(valor instanceof Cliente){//controla si el valor es una instacia del tipo cliente
             this.#cliente = valor;
@@ -15,14 +23,6 @@ export class Cuenta{
         return this.#cliente
     }
     
-    constructor(cliente, numero, agencia){
-        this.cliente = cliente;
-        this.numero = numero;
-        this.agencia = agencia;
-        this.#saldo = 0;
-        Cuenta.cantidadCuentas++;
-    }
-
     depositoCta(valor){
         if(valor>0){
             this.#saldo += valor;
