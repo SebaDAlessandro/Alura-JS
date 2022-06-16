@@ -8,4 +8,5 @@ export class Cliente {
         this.dni = dni;
         this.rutCliente = rutCliente;
     }
+
 }
