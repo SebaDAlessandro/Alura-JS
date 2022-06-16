@@ -5,7 +5,7 @@ import { Cliente } from './Cliente.js'
 import { Cuenta } from './Cuenta.js';
 
 /*Cliente Seba = nombre, dni, rutCliente*/
-const cliente = new Cliente('Seba','30303303','123')
+const cliente = new Cliente('Puppy','30303303','123')
 
 /*cuenta = cliente, nroCta, sucursal, saldo*/
 const ctaCteSeba = new Cuenta(cliente, '00001','001',0);
