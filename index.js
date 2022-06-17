@@ -2,7 +2,8 @@
 import { Cliente } from './Cliente.js'
 import { CtaAhorro } from './CtaAhorro.js';
 import { CtaCte } from './CtaCte.js';
-//import { Cuenta } from './Cuenta.js';
+import { CtaNomina } from './CtaNomina.js';
+import { Cuenta } from './Cuenta.js';
 
 /*Cliente Seba = nombre, dni, rutCliente*/
 const cliente = new Cliente('Seba','30303303','123')
@@ -48,7 +49,7 @@ console.log('')
 //Transferencia entre cuentas
 ctaCtePao.transferirParaCta(100,ctaCteSeba)
 console.log(`Saldo Pao Cta Cte: ${ctaCtePao.verSaldo()}`)
-console.log(`Saldo Seba Cta Ahorro: ${ctaCteSeba.verSaldo()}`)
+console.log(`Saldo Seba Cta Cte: ${ctaCteSeba.verSaldo()}`)
 console.log('')
 
 //cantidad de cuentas banco privado
@@ -67,3 +68,20 @@ console.log('')
 ctaAhorroSeba.retirarCta(100)
 console.log(`Saldo Seba Cta Cte luego del retiro: ${ctaAhorroSeba.verSaldo()}`)
 console.log('')
+
+//probando clases abstractas
+/*IMPORTANTE: si bien tenemos importando la clase Cuenta, solo podemos acceder a la clase base Cuenta 
+desde sus extenciones en las otras clases y no por instanciar directamente su clase como en el ejemplo 
+de abajo*/
+//const cuentaSimple = new Cuenta(cliente2, 'c0002', '001')
+//console.log(cuentaSimple)
+
+
+/*cuenta = cliente, nroCta, sucursal*/
+const ctaNominaSeba = new CtaNomina(cliente, 'c0001','001',100);
+//cargando saldo en cuentas
+ctaNominaSeba.depositoCta(150)
+console.log(`Saldo deposito Seba Cta Nomina: ${ctaNominaSeba.verSaldo()}`)
+//retirando saldo en cuentas
+ctaNominaSeba.retirarCta(50)
+console.log(`Saldo retiro Seba Cta Nomina: ${ctaNominaSeba.verSaldo()}`)

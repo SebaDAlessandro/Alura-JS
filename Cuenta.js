@@ -6,11 +6,17 @@ export class Cuenta{
     static cantidadCuentas = 0;/*valor estatico linkeado a la clase general. Cuenta la cantidad de cuentas
     existentes*/
 
-    constructor(cliente, numero, agencia){
+    constructor(cliente, numero, agencia, saldo){
+
+        if(this.constructor == Cuenta){
+            throw new Error('No se debe instanciar objetos de la clase Cuenta')
+        }/*con esto prevenimos que se hagan instancias desde la clase base = Cuenta. Solo se puede acceder 
+        desde las clases extendidas => esto es el concepto de clases abstractas*/
+
         this.cliente = cliente;
         this.numero = numero;
         this.agencia = agencia;
-        this.#saldo = 0;
+        this.#saldo = saldo;
         Cuenta.cantidadCuentas++;
     }
 
@@ -43,7 +49,9 @@ export class Cuenta{
     }
 
     retirarCta(valor){
-        _retirarCta(valor, 0)
+        //cada clase debe tener su metodo retirarCta he instanciar desde ahi. Ahora si es un metodo abstracto! 
+        throw new Error('Debe ejecutar el metodo retirarCta en su clase')
+
     }
 
     /*para retirar saldos sin comision usamos el de arriba... por el contrario usamos el metodo privado*/
