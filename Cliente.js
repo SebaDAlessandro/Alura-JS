@@ -10,13 +10,13 @@ export class Cliente {
         this.rutCliente = rutCliente;
         this.#clave='';
     }
-    
+
     asignarClave(clave){
         this.#clave = clave;
     }
 
-    get clave(){
-        return this.#clave;
+    autenticable(clave){
+        return clave === this.#clave;
     }
 
 }
