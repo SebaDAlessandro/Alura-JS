@@ -1,9 +1,13 @@
 
 import { Cliente } from './Cliente.js'
-import { CtaAhorro } from './CtaAhorro.js';
-import { CtaCte } from './CtaCte.js';
-import { CtaNomina } from './CtaNomina.js';
-import { Cuenta } from './Cuenta.js';
+import { CtaAhorro } from './Cuentas/CtaAhorro.js';
+import { CtaCte } from './Cuentas/CtaCte.js';
+import { CtaNomina } from './Cuentas/CtaNomina.js';
+import { Cuenta } from './Cuentas/Cuenta.js';
+import { Empleado } from './Empleados/Empleado.js';
+import { Gerente } from './Empleados/Gerente.js';
+import { Director } from './Empleados/Director.js';
+import { SistemaAutenticacion } from './SistemaAutenticacion.js';
 
 /*Cliente Seba = nombre, dni, rutCliente*/
 const cliente = new Cliente('Seba','30303303','123')
@@ -85,3 +89,25 @@ console.log(`Saldo deposito Seba Cta Nomina: ${ctaNominaSeba.verSaldo()}`)
 //retirando saldo en cuentas
 ctaNominaSeba.retirarCta(50)
 console.log(`Saldo retiro Seba Cta Nomina: ${ctaNominaSeba.verSaldo()}`)
+
+//carga de nuevo empleados de
+const empleado = new Empleado('Juan Perez', '10101101',10000)
+empleado.asignarClave('123')
+const gerente = new Gerente('Jose Lopez', '40404404',12000)
+gerente.asignarClave('321')
+const director = new Director('Buby Curvas', '50505505',15000)
+director.asignarClave('456')
+
+console.log(empleado.verBonificacion(), gerente.verBonificacion(), director.verBonificacion())
+
+//sistema de autenticacion
+console.log('')
+console.log('Empleado:')
+console.log(SistemaAutenticacion.login(empleado, '123'))
+console.log('')
+console.log('Gerente:')
+console.log(SistemaAutenticacion.login(gerente, '123'))
+console.log('')
+console.log('Director:')
+console.log(SistemaAutenticacion.login(director, '456'))
+console.log('')
